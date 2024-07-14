@@ -5,9 +5,11 @@ import ImageGallery from "../components/ImageGallery";
 const ServicesPage = () => {
   return (
     <Layout>
-      <section className="bg-gradient-to-r from-blue-500 to-teal-500 py-12">
-        <ImageGallery />
-      </section>
+      <div className="relative h-screen">
+        <section className="py-12">
+          <ImageGallery />
+        </section>
+      </div>
     </Layout>
   );
 };

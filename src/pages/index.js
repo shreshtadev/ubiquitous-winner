@@ -2,23 +2,11 @@ import React, { useEffect } from "react";
 import Layout from "../components/layout";
 import Hero from "../components/Hero";
 import Services from "../components/Services";
-import { scrollTrigger } from "../utils/scrollTrigger";
-import Footer from "../components/footer";
 const IndexPage = () => {
-  useEffect(() => {
-    scrollTrigger(".reveal");
-  }, []);
   return (
     <Layout>
-      <section className="bg-gradient-to-r from-blue-500 to-teal-500">
-        <section className="reveal">
-          <Hero />
-        </section>
-        <section className="reveal">
-          <Services />
-        </section>
-        <Footer />
-      </section>
+      <Hero />
+      <Services />
     </Layout>
   );
 };

@@ -14,7 +14,7 @@ const ImageGallery = () => {
     query {
       allFile(
         filter: {
-          extension: { regex: "/(jpg|jpeg|png)/" }
+          extension: { regex: "/(jpeg)/" }
           sourceInstanceName: { eq: "images" }
         }
       ) {
@@ -91,7 +91,7 @@ const ImageGallery = () => {
   const currentImages = images.slice(indexOfFirstImage, indexOfLastImage);
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 z-10 min-h-screen">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {currentImages.map((image, index) => (
           <div
@@ -110,7 +110,7 @@ const ImageGallery = () => {
         ))}
       </div>
 
-      <div className="flex justify-center mt-4">
+      <div className="relative flex justify-center mt-4 z-45">
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index}

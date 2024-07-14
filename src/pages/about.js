@@ -1,16 +1,16 @@
 import * as React from "react";
 import Layout from "../components/layout";
 import { graphql, useStaticQuery } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { getImage } from "gatsby-plugin-image";
+import { motion } from "framer-motion";
 
 const AboutPage = () => {
-  const data = useStaticQuery(graphql`
+  const bgdata = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "j.jpeg" }) {
+      file(relativePath: { eq: "abs2.png" }) {
         childImageSharp {
           gatsbyImageData(
-            layout: CONSTRAINED
-            width: 800
+            width: 1920
             placeholder: BLURRED
             formats: [AUTO, WEBP, AVIF]
           )
@@ -19,61 +19,77 @@ const AboutPage = () => {
     }
   `);
 
-  const image = getImage(data.file.childImageSharp.gatsbyImageData);
+  const imageData = getImage(bgdata.file.childImageSharp.gatsbyImageData);
+  const backgroundImageStyle = {
+    width: "100%",
+    height: "100vh",
+    backgroundImage: `url(${imageData.images.fallback.src})`,
+    backgroundSize: "fill",
+    backgroundPosition: "center",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "white",
+    fontSize: "2rem",
+  };
   return (
     <Layout>
-      <section className="bg-gradient-to-r from-blue-500 to-teal-500 py-12 text-xl font-medium">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white">About Us</h2>
-            <p className="text-gray-200 mt-4">
-              Building the Future, Restoring the Past
-            </p>
-          </div>
-          <div className="flex flex-wrap -mx-4">
-            <div className="w-full md:w-1/2 px-4 mb-8 md:mb-0">
-              <GatsbyImage
-                image={image}
-                alt="Construction Image"
-                className="rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300"
-              />
+      <div className="relative h-screen">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="absolute bg-cover bg-center h-screen inset-0 filter blur-sm"
+          style={backgroundImageStyle}
+        ></motion.div>
+        <section className="relative z-10  py-12 text-xl font-medium min-h-screen flex items-center justify-center">
+          <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-6xl">
+            <div className="container mx-auto px-4">
+              <div className="text-center mb-12">
+                <h2 className="text-4xl font-bold text-black">About Us</h2>
+                <p className="text-black mt-4">
+                  Building the Future, Restoring the Past
+                </p>
+              </div>
+              <div className="flex -mx-4">
+                <div className="w-full px-4">
+                  <h3 className="text-2xl font-semibold text-black mb-4">
+                    Our Mission
+                  </h3>
+                  <p className="text-black mb-4">
+                    At{" "}
+                    <span className="font-bold text-pretty text-2xl">
+                      S K Engineering
+                    </span>
+                    , we are dedicated to delivering top-notch construction
+                    engineering services that exceed our clients' expectations.
+                    Our mission is to build sustainable and innovative
+                    structures that stand the test of time.
+                  </p>
+                  <h3 className="text-2xl font-semibold text-black mb-4">
+                    Our Values
+                  </h3>
+                  <ul className="list-disc list-inside text-black mb-4">
+                    <li>Integrity and Transparency</li>
+                    <li>Quality and Excellence</li>
+                    <li>Innovation and Sustainability</li>
+                    <li>Client Satisfaction</li>
+                  </ul>
+                  <h3 className="text-2xl font-semibold text-black mb-4">
+                    Our Team
+                  </h3>
+                  <p className="text-black">
+                    Our team of experienced engineers, architects, and project
+                    managers work collaboratively to ensure every project is
+                    completed on time and within budget. We are committed to
+                    continuous improvement and staying ahead of industry trends.
+                  </p>
+                </div>
+              </div>
             </div>
-            <div className="w-full md:w-1/2 px-4">
-              <h3 className="text-2xl font-semibold text-white mb-4">
-                Our Mission
-              </h3>
-              <p className="text-gray-200 mb-4">
-                At{" "}
-                <span className="font-bold text-pretty text-2xl">
-                  S K Engineering
-                </span>
-                , we are dedicated to delivering top-notch construction
-                engineering services that exceed our clients' expectations. Our
-                mission is to build sustainable and innovative structures that
-                stand the test of time.
-              </p>
-              <h3 className="text-2xl font-semibold text-white mb-4">
-                Our Values
-              </h3>
-              <ul className="list-disc list-inside text-gray-200 mb-4">
-                <li>Integrity and Transparency</li>
-                <li>Quality and Excellence</li>
-                <li>Innovation and Sustainability</li>
-                <li>Client Satisfaction</li>
-              </ul>
-              <h3 className="text-2xl font-semibold text-white mb-4">
-                Our Team
-              </h3>
-              <p className="text-gray-200">
-                Our team of experienced engineers, architects, and project
-                managers work collaboratively to ensure every project is
-                completed on time and within budget. We are committed to
-                continuous improvement and staying ahead of industry trends.
-              </p>
-            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </Layout>
   );
 };
