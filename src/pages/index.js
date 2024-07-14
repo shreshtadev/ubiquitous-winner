@@ -11,10 +11,10 @@ const IndexPage = () => {
   return (
     <Layout>
       <section className="bg-gradient-to-r from-blue-500 to-teal-500">
-        <section class="reveal">
+        <section className="reveal">
           <Hero />
         </section>
-        <section class="reveal">
+        <section className="reveal">
           <Services />
         </section>
         <Footer />
