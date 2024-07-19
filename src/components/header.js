@@ -10,7 +10,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-gray-800 p-4 top-0 z-50 shadow-md">
+    <nav className="bg-gray-800 sticky top-0 p-4 z-50 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-white text-2xl font-bold flex-shrink-0">
           S K Engineering

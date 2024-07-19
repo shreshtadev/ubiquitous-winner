@@ -10,10 +10,10 @@ export default function Layout({ children }) {
   return (
     <section>
       <Header />
-      <main className="font-inter reveal">{children}</main>
-      <section className="reveal">
-        <Footer />
-      </section>
+      <main className="font-inter">
+        <section className="reveal">{children}</section>
+      </main>
+      <Footer />
     </section>
   );
 }

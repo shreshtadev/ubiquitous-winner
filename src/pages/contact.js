@@ -53,7 +53,7 @@ const ContactPage = () => {
               <p className="text-gray-700">Phone: 9945153462</p>
             </div>
             <div className="mt-8 text-center text-gray-400">
-              &copy; {new Date().getFullYear()} shengineeringworks - All rights
+              &copy; {new Date().getFullYear()} skengineeringworks - All rights
               reserved.
             </div>
           </div>

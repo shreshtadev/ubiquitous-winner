@@ -38,10 +38,16 @@ const ImageGallery = () => {
     getImage(edge.node.childImageSharp.gatsbyImageData)
   );
   const totalPages = Math.ceil(images.length / imagesPerPage);
-
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Optional for smooth scrolling
+    });
+  };
   const openModal = (index) => {
     setCurrentImageIndex(index);
     setIsOpen(true);
+    scrollToTop();
   };
 
   const closeModal = () => {
